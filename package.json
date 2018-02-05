@@ -1,0 +1,22 @@
+{
+  "name": "conlia-mall-index-collection-item",
+  "version": "2.0.0",
+  "main": "client/src/app.js",
+  "scripts": {
+    "test": "nodemon server/app.js",
+    "start": "node system/app.js",
+    "bundle": "node system/bundle.js",
+    "deploy": "node system/deploy_QA.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevSwarmGate/conlia-index-product-item.git"
+  },
+  "devDependencies": {
+    "dev-env-build-system": "git+https://github.com/jefftong/dev-env-build-system.git",
+    "express": "^4.15.4",
+    "front-end-webcomponent-base": "git+https://github.com/jefftong/front-end-client-web-component-base.git",
+    "sg-qa-deploy": "git+https://github.com/jefftong/sg-qa-deploy.git"
+  },
+  "author": "Swarmgate"
+}
