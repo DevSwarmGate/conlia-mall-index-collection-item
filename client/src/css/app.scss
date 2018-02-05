@@ -1,0 +1,64 @@
+$_grey1: #696969;
+$_grey2: #C9C9C9;
+
+html,body{ 
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+@mixin _common{
+	font-family: arial;
+	position:relative;
+	margin: 0;
+}
+@mixin _floatl{
+	float: left;
+}
+@mixin _floatr{
+	float: right;
+}
+
+#conlia-mall-index-collection-item-group{
+	@include _common;
+	@include _floatl;
+	width: 8rem;
+	background: #FFFFFF;
+	margin-top: 1.3rem;
+	margin-left: 1rem;
+	margin-right: 1rem;
+	margin-bottom: 1.5rem;
+
+	#img-group{
+		width: 8rem;
+		height: 8rem;
+		#img{
+			width: 100%;
+			height: 100%;
+		}
+	}
+	#item-name{
+		width: 8rem;
+		margin-top: 0.9rem;
+		color: $_grey1;
+		font-size: 0.9rem;
+		text-align: center;
+		height: 1.2rem;
+		line-height:1.2rem;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+	#on-sale{
+		width: 8rem;
+		color: $_grey1;
+		font-size: 0.9rem;
+		height: 1.5rem;
+		line-height: 1.5rem;
+		text-align: center;
+		#price{
+			font-size: 0.8rem;
+			color: $_grey2;
+			text-decoration: line-through;
+		}
+	}
+}
