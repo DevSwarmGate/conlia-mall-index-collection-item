@@ -80,11 +80,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
             _this._img.src = _this.getAttribute('img');
             _this._item_name.innerText = _this.getAttribute('item-name');
 
-            if (_this.getAttribute('on-sale') != null) {
+            if (_this.getAttribute('on-sale') == null || _this.getAttribute('on-sale') == '') {
+                _this._on_sale_price.innerText = _this.getAttribute('price');
+                _this._price.innerText = '';
+            } else {
                 _this._on_sale_price.innerText = _this.getAttribute('on-sale');
                 _this._price.innerText = _this.getAttribute('price');
-            } else {
-                _this._on_sale_price.innerText = _this.getAttribute('price');
             }
         };
     }, {}], 4: [function (require, module, exports) {
