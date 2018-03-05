@@ -12,4 +12,8 @@ module.exports = function _render(_this){
 		_this._price.innerText = _this.getAttribute('price');
 	}
 
+	if(_this.getAttribute('sku-id') != null){
+        _this._sku.setAttribute('value', _this.getAttribute('sku-id'))
+    }
+
 }

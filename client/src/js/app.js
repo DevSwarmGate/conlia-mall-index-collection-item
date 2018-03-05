@@ -6,6 +6,7 @@ const _connectedCallback = require('./_connectedCallback'),
 class Component extends Base{
     constructor(name){
         super(name);
+        this._sku = this.shadowRoot.querySelector('#sku')
         this._img = this.shadowRoot.querySelector('#img');
         this._item_name = this.shadowRoot.querySelector('#item-name');
         this._on_sale_price = this.shadowRoot.querySelector('#on-sale-price');
@@ -13,7 +14,7 @@ class Component extends Base{
         
         this._onclick = (e)=>{};
     }
-    static get observedAttributes(){return ['img','item-name','price','on-sale'];}
+    static get observedAttributes(){return ['sku-id','img','item-name','price','on-sale'];}
 
     set onClick(cb){this._onclick = cb;}
 
