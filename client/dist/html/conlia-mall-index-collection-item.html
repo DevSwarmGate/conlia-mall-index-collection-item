@@ -53,6 +53,7 @@ html, body {
 
 </style>
 	<div id="conlia-mall-index-collection-item-group">
+		<input hidden="" id="sku">
 		<div id="img-group"><img id="img"></div>
 		<div id="item-name"></div>
 		<div id="on-sale"><span id="on-sale-price"></span>&nbsp;<span id="price"></span></div>
@@ -147,6 +148,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
                 _this._on_sale_price.innerText = _this.getAttribute('on-sale');
                 _this._price.innerText = _this.getAttribute('price');
             }
+
+            if (_this.getAttribute('sku-id') != null) {
+                _this._sku.setAttribute('value', _this.getAttribute('sku-id'));
+            }
         };
     }, {}], 4: [function (require, module, exports) {
         var Base = require('front-end-webcomponent-base');
@@ -162,6 +167,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
                 var _this2 = _possibleConstructorReturn(this, (Component.__proto__ || Object.getPrototypeOf(Component)).call(this, name));
 
+                _this2._sku = _this2.shadowRoot.querySelector('#sku');
                 _this2._img = _this2.shadowRoot.querySelector('#img');
                 _this2._item_name = _this2.shadowRoot.querySelector('#item-name');
                 _this2._on_sale_price = _this2.shadowRoot.querySelector('#on-sale-price');
@@ -199,7 +205,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
             }], [{
                 key: "observedAttributes",
                 get: function get() {
-                    return ['img', 'item-name', 'price', 'on-sale'];
+                    return ['sku-id', 'img', 'item-name', 'price', 'on-sale'];
                 }
             }]);
 
