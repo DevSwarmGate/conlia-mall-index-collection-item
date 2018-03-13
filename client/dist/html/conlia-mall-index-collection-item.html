@@ -167,6 +167,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
                 var _this2 = _possibleConstructorReturn(this, (Component.__proto__ || Object.getPrototypeOf(Component)).call(this, name));
 
+                _this2._version = "v1.0";
                 _this2._sku = _this2.shadowRoot.querySelector('#sku');
                 _this2._img = _this2.shadowRoot.querySelector('#img');
                 _this2._item_name = _this2.shadowRoot.querySelector('#item-name');
@@ -264,9 +265,15 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
         }();
     }, { "./_init_v0": 11, "./_init_v1": 12 }], 6: [function (require, module, exports) {
         module.exports = function _createShadowDom(wrapper, ele) {
-            if (ele.createShadowRoot) return ele.createShadowRoot();
+            if (ele.createShadowRoot) {
+                ele._shadowRoot = ele.createShadowRoot();
+                return ele._shadowRoot;
+            }
 
-            if (ele.attachShadow) return ele.attachShadow({ mode: wrapper.__is_open_root__ ? 'open' : 'close' });
+            if (ele.attachShadow) {
+                ele._shadowRoot = ele.attachShadow({ mode: wrapper.__is_open_root__ ? 'open' : 'close' });
+                return ele._shadowRoot;
+            }
         };
     }, {}], 7: [function (require, module, exports) {
         module.exports = function _createTemplate(_this, scriptOwner) {
@@ -281,14 +288,25 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
         };
     }, {}], 8: [function (require, module, exports) {
         module.exports = function _inherit_method(wrapper, ele) {
-            var method_names = Object.getOwnPropertyDescriptors(wrapper.__proto__);
+            var method_names = Object.getOwnPropertyNames(wrapper.__proto__);
+            // console.log(Object.getOwnPropertyNames(wrapper.__proto__),Object.getOwnPropertyDescriptors(wrapper.__proto__));
+            // for(let i in method_names){
 
-            for (var i in method_names) {
+            //     if(i !== 'constructor' && i !=='observedAttributes'){
+            //         Object.defineProperty(ele.__proto__,i,method_names[i]);
+            //     }
+            // }
 
+            method_names.forEach(function (i) {
                 if (i !== 'constructor' && i !== 'observedAttributes') {
-                    Object.defineProperty(ele.__proto__, i, method_names[i]);
+                    Object.defineProperty(ele.__proto__, i, {
+                        value: wrapper.__proto__[i],
+                        writable: true,
+                        enumerable: false,
+                        configurable: true
+                    });
                 }
-            }
+            });
         };
     }, {}], 9: [function (require, module, exports) {
         module.exports = function _inhert_observed_attributes(wrapper) {
@@ -315,7 +333,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
             var _new_wrapper = null;
 
             //shadowRoot enable
-            wrapper.shadowRoot = ele.shadowRoot;
+            if (ele.shadowRoot !== null) {
+                wrapper.shadowRoot = ele.shadowRoot;
+            } else {
+                wrapper.shadowRoot = ele._shadowRoot;
+            }
+
             _new_wrapper = new wrapper.__proto__.constructor(wrapper);
             _new_wrapper.shadowRoot = ele.shadowRoot;
 
