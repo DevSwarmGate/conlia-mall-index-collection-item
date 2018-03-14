@@ -106,7 +106,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
                 var _this2 = _possibleConstructorReturn(this, (Component.__proto__ || Object.getPrototypeOf(Component)).call(this, name));
 
-                _this2._version = "v1.0";
+                _this2._version = "v1.1";
                 _this2._sku = _this2.shadowRoot.querySelector('#sku');
                 _this2._img = _this2.shadowRoot.querySelector('#img');
                 _this2._item_name = _this2.shadowRoot.querySelector('#item-name');
@@ -228,7 +228,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
     }, {}], 8: [function (require, module, exports) {
         module.exports = function _inherit_method(wrapper, ele) {
             var method_names = Object.getOwnPropertyNames(wrapper.__proto__);
-            // console.log(Object.getOwnPropertyNames(wrapper.__proto__),Object.getOwnPropertyDescriptors(wrapper.__proto__));
+
+            // console.log(Object.getOwnPropertyNames(wrapper.__proto__),"\n",Object.getOwnPropertyDescriptors(wrapper.__proto__));
             // for(let i in method_names){
 
             //     if(i !== 'constructor' && i !=='observedAttributes'){
@@ -238,12 +239,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
             method_names.forEach(function (i) {
                 if (i !== 'constructor' && i !== 'observedAttributes') {
-                    Object.defineProperty(ele.__proto__, i, {
-                        value: wrapper.__proto__[i],
-                        writable: true,
-                        enumerable: false,
-                        configurable: true
-                    });
+                    Object.defineProperty(ele.__proto__, i, Object.getOwnPropertyDescriptor(wrapper.__proto__, i));
                 }
             });
         };

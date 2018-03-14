@@ -1,0 +1,7 @@
+*.idea
+*.sass-cache
+*.git
+*node_modules
+*bower_components
+*sftp-config.json
+
