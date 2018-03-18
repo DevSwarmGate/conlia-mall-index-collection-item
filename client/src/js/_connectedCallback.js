@@ -11,6 +11,9 @@ module.exports = function _connectedCallback(_this){
 	},false)
 
 	_this.addEventListener('click', function(e){
+		if(_this._debug)
+			console.log(`${_this.__name__}._onClick:`,e);
+		
 		_this._onclick(e);
 	},false)
 
