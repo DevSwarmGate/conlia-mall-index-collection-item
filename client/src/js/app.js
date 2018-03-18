@@ -19,7 +19,7 @@ class Component extends Base{
     static get observedAttributes(){return ['sku-id','img','item-name','price','on-sale'];}
 
     set debug(bool){this._debug = bool;}
-    
+
     set onClick(cb){this._onclick = cb;}
 
     //public
