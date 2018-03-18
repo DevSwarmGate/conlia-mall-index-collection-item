@@ -103,6 +103,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
             }, false);
 
             _this.addEventListener('click', function (e) {
+                if (_this._debug) console.log(_this.__name__ + "._onClick:", e);
+
                 _this._onclick(e);
             }, false);
         };
@@ -167,7 +169,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
                 var _this2 = _possibleConstructorReturn(this, (Component.__proto__ || Object.getPrototypeOf(Component)).call(this, name));
 
-                _this2._version = "v1.1";
+                _this2._debug = false;
+                _this2._version = "v1.2";
                 _this2._sku = _this2.shadowRoot.querySelector('#sku');
                 _this2._img = _this2.shadowRoot.querySelector('#img');
                 _this2._item_name = _this2.shadowRoot.querySelector('#item-name');
@@ -197,6 +200,11 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
                 key: "_render",
                 value: function _render() {
                     _render2(this);
+                }
+            }, {
+                key: "debug",
+                set: function set(bool) {
+                    this._debug = bool;
                 }
             }, {
                 key: "onClick",
